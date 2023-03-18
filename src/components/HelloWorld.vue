@@ -4,36 +4,37 @@ import GapWord from "./GapWord.vue"
 </script>
 
 <template>
+  <p v-if="points == 14" class="text-3xl text-purple-500">Ringo</p>
   {{ points }}
   <br>
   <div style="text-align: left; place-items: left;" class="border-slate-300 border-4 rounded-lg">
     <pre>
-      <code>
-      <span class="keyword">import</span> java.util.ArrayList;
-      <br>
-      <span class="keyword">public class</span> Main {
-      <br>
-        <span class="keyword">abstract class</span> Graph {
-          <br>
-            <span class="comment">  // Returns the number of nodes in the graph</span>
+        <code>
+        <span class="keyword">import</span> java.util.ArrayList;
+        <br>
+        <span class="keyword">public class</span> Main {
+        <br>
+          <span class="keyword">abstract class</span> Graph {
             <br>
-            <span class="keyword">  abstract</span> int nodeCount();
-            <br>
-            <span class="comment">  // Returns all nodes connected to </span>
-            <br>
-            <span class="keyword">  abstract</span> int[] neighboursFrom(int node);
-            <br>
-            <span class="comment">  // Returns all nodes contained in the graph</span>
-            <br>
-            <span class="keyword">  abstract</span> ArrayList&lt;Integer&gt; nodes();
-            <br>
-            <span class="comment">// Calculates the distance between node1 and node2 </span>
-            <br>
-            <span class="keyword">abstract</span> double distance(int node1, int node2);
-            <br>
-        }
-        </code>
-      </pre>
+              <span class="comment">  // Returns the number of nodes in the graph</span>
+              <br>
+              <span class="keyword">  abstract</span> int nodeCount();
+              <br>
+              <span class="comment">  // Returns all nodes connected to </span>
+              <br>
+              <span class="keyword">  abstract</span> int[] neighboursFrom(int node);
+              <br>
+              <span class="comment">  // Returns all nodes contained in the graph</span>
+              <br>
+              <span class="keyword">  abstract</span> ArrayList&lt;Integer&gt; nodes();
+              <br>
+              <span class="comment">// Calculates the distance between node1 and node2 </span>
+              <br>
+              <span class="keyword">abstract</span> double distance(int node1, int node2);
+              <br>
+          }
+          </code>
+                </pre>
   </div>
   <br>
   <br>
@@ -63,23 +64,23 @@ import GapWord from "./GapWord.vue"
           <span class="keyword">return</span> predecessor;<br>
       }<br>
       </code>
-      </pre>
+                </pre>
   </div>
   <br>
   <br>
   <div style="text-align: left;" class="border-slate-300 border-4 rounded-lg">
     <pre>
         <code>
-          <span class="keyword">void</span> initialize(<GapWord :correctWord="'Graph'" /> graph, <GapWord :correctWord="'int'" /> startNode, <GapWord :correctWord="'double[]'" /> distance, <GapWord :correctWord="'int[]'" /> predecessor, ArrayList &lt;Integer&gt; notIncluded) {
+          <span class="keyword">void</span> initialize(<GapWord :correctWord="'Graph'"  @clicked="onChildUpdate"/> graph, <GapWord :correctWord="'int'"  @clicked="onChildUpdate"/> startNode, <GapWord :correctWord="'double[]'"  @clicked="onChildUpdate"/> distance, <GapWord :correctWord="'int[]'"  @clicked="onChildUpdate"/> predecessor, ArrayList &lt;Integer&gt; notIncluded) {
             <span class="keyword">for</span> (<span class="keyword">int</span> node : graph.<GapWord :correctWord="'nodes'" />()) {
-                distance[<GapWord :correctWord="'node'" />] = <span class="variable">Double.POSITIVE_INFINITY</span>;
-                predecessor[<GapWord :correctWord="'node'" />] = <span class="number">-1</span>;
+                distance[<GapWord :correctWord="'node'"  @clicked="onChildUpdate"/>] = <span class="variable">Double.POSITIVE_INFINITY</span>;
+                predecessor[<GapWord :correctWord="'node'"  @clicked="onChildUpdate"/>] = <span class="number">-1</span>;
             }
-            distance[<GapWord :correctWord="'startNode'" />] = <GapWord :correctWord="'0'" />;
-            notIncluded.<span class="function">addAll</span>(graph.<GapWord :correctWord="'nodes'" />());
+            distance[<GapWord :correctWord="'startNode'"  @clicked="onChildUpdate"/>] = <GapWord :correctWord="'0'"  @clicked="onChildUpdate"/>;
+            notIncluded.<span class="function">addAll</span>(graph.<GapWord :correctWord="'nodes'"  @clicked="onChildUpdate"/>());
           }
         </code>
-        </pre>
+                  </pre>
   </div>
   <br>
   <br>
@@ -87,14 +88,14 @@ import GapWord from "./GapWord.vue"
     <pre>
         <code>
           <span class="keyword">void</span> distanceUpdate(<span class="type">Graph</span> graph, <span class="type">int</span> smallestDistanceNode, <span class="type">int</span> currentNeighbour, <span class="variable">double</span>[] distance, <span class="variable">int</span>[] predecessor) {
-              <span class="variable">double</span> alternativePathDistance = distance[smallestDistanceNode] <GapWord :correctWord="'+'"/> graph.distance(smallestDistanceNode, currentNeighbour);
-              <span class="keyword">if</span> (<GapWord :correctWord="'alternativePathDistance'"/> &lt; distance[currentNeighbour]) {
-                  distance[currentNeighbour] = <GapWord :correctWord="'alternativePathDistance'"/>;
-                  predecessor[<GapWord :correctWord="'currentNeighbour'"/>] = smallestDistanceNode;
+              <span class="variable">double</span> alternativePathDistance = distance[smallestDistanceNode] <GapWord :correctWord="'+'"  @clicked="onChildUpdate"/> graph.distance(smallestDistanceNode, currentNeighbour);
+              <span class="keyword">if</span> (<GapWord :correctWord="'alternativePathDistance'"  @clicked="onChildUpdate"/> &lt; distance[currentNeighbour]) {
+                  distance[currentNeighbour] = <GapWord :correctWord="'alternativePathDistance'"  @clicked="onChildUpdate"/>;
+                  predecessor[<GapWord :correctWord="'currentNeighbour'"  @clicked="onChildUpdate"/>] = smallestDistanceNode;
               }
           }
         </code>
-      </pre>
+                </pre>
   </div>
 </template>
 
